@@ -130,6 +130,8 @@ class Arrow(CMakePackage, CudaPackage):
 
     root_cmakelists_dir = "cpp"
 
+    patch("apple-libtool-check.patch", when="@22.0.0 platform=darwin")
+
     def patch(self):
         """Prevent `-isystem /usr/include` from appearing, since this confuses gcc."""
         filter_file(
