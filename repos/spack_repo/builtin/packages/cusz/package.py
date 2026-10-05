@@ -22,6 +22,8 @@ class Cusz(CMakePackage, CudaPackage):
     conflicts("cuda_arch=none", when="+cuda")
 
     version("develop", branch="develop")
+    version("0.19", sha256="39814ede103c0abb01fe9812735c661870342d7c35a102379e642c336417a017")
+    version("0.18", sha256="f036acfaaf7a1f8852a80ff4364652a6c7a9595ab8afe996d28f4e87f715d28c")
     version("0.14.0", commit="e57fd7cd9df923164af9dd307b0b3d37dd9df137")
     version("0.9.0rc3", commit="c3c3a74d006c6de3c145255241fb181682bd1492")
     # 0.9.0rc1 was listed as 0.6.0 for a while in spack
@@ -36,7 +38,7 @@ class Cusz(CMakePackage, CudaPackage):
     conflicts("^cuda@11.0.2:11.2.2")
 
     # https://github.com/spack/spack-packages/pull/2059#issuecomment-3443184517
-    conflicts("^cuda@13:")
+    conflicts("^cuda@13:", when="@:0.17")
 
     depends_on("cub", when="^cuda@:10.2.89")
 
